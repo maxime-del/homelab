@@ -16,6 +16,7 @@ terraform.rc
 *.pem
 *.key
 secrets.auto.tfvars
+*.env
 
 .vscode/
 .idea/
