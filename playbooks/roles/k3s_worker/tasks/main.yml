@@ -1,0 +1,7 @@
+- name: Installer k3s agent, rejoint le master
+  ansible.builtin.shell: |
+    curl -sfL https://get.k3s.io | K3S_URL=https://{{ master_ip }}:6443 K3S_TOKEN={{ k3s_token }} sh -
+  args:
+    creates: /usr/local/bin/k3s-agent-uninstall.sh
+  vars:
+    master_ip: "{{ hostvars[groups['k3s_masters'][0]]['ansible_host'] }}"

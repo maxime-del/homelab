@@ -1,0 +1,20 @@
+- name: Installer k3s server avec token fixe
+  ansible.builtin.shell: |
+    curl -sfL https://get.k3s.io | K3S_TOKEN={{ k3s_token }} sh -
+  args:
+    creates: /usr/local/bin/k3s
+
+- name: Attendre que le master soit prêt (kubeconfig généré)
+  ansible.builtin.wait_for:
+    path: /etc/rancher/k3s/k3s.yaml
+    state: present
+    timeout: 120
+
+- name: Lister les noeuds du cluster
+  ansible.builtin.command: k3s kubectl get nodes
+  register: nodes_output
+  changed_when: false
+
+- name: Afficher le résultat
+  ansible.builtin.debug:
+    var: nodes_output.stdout_lines

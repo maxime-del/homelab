@@ -1,0 +1,11 @@
+- name: Install on k3s masters
+  hosts: k3s_masters
+  become: true
+  roles:
+    - k3s_master
+
+- name: Install on k3s workers
+  hosts: k3s_workers
+  become: true
+  roles:
+    - k3s_worker
