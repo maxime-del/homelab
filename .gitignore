@@ -21,6 +21,9 @@ secrets.auto.tfvars
 .vscode/
 .idea/
 .DS_Store
+<<<<<<< HEAD
 
 # Ansible
 *vault.yml
+=======
+>>>>>>> d7b05f7d89f528d4e79757776924ed62c7b9f290
