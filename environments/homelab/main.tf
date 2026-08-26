@@ -33,4 +33,7 @@ module "k8s_workers" {
 
   ssh_public_key = var.ssh_public_key
   tags           = ["k8s", "worker"]
+
+  # Disque de données dédié pour le stockage persistant (ex: Sonarr) sur worker-1
+  extra_disk_size_gb = each.key == "worker-1" ? 50 : null
 }

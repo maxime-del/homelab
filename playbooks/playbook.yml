@@ -9,3 +9,4 @@
   become: true
   roles:
     - k3s_worker
+    - data_disk

@@ -42,6 +42,12 @@ variable "datastore_id" {
   default     = "local-lvm"
 }
 
+variable "extra_disk_size_gb" {
+  description = "Size (Go) of the optionnal second disk (scsi1)."
+  type        = number
+  default     = null
+}
+
 variable "network_bridge" {
   description = "Network bridge interface"
   type        = string

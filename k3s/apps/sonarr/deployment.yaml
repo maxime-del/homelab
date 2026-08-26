@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sonarr
+  labels:
+    app: sonarr
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: sonarr
+  template:
+    metadata:
+      labels:
+        app: sonarr
+    spec:
+      nodeSelector:
+        kubernetes.io/hostname: k8s-worker-1
+      containers:
+        - name: sonarr
+          image: lscr.io/linuxserver/sonarr:latest
+          env:
+            - name: PUID
+              value: "1000"
+            - name: PGID
+              value: "1000"
+            - name: TZ
+              value: Europe/Paris
+          ports:
+            - name: http
+              containerPort: 8989
+          volumeMounts:
+            - name: data
+              mountPath: /config
+              subPath: config
+            - name: data
+              mountPath: /tv
+              subPath: tv
+          resources:
+            requests:
+              cpu: 100m
+              memory: 256Mi
+            limits:
+              cpu: "1"
+              memory: 1Gi
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: sonarr-data

@@ -1,0 +1,31 @@
+- name: Vérifier si le disque de données est défini pour cet hôte
+  ansible.builtin.meta: end_host
+  when: data_disk_device is not defined
+
+- name: Créer une partition ext4 sur le disque de données
+  community.general.parted:
+    device: "{{ data_disk_device }}"
+    number: 1
+    state: present
+    fs_type: ext4
+  register: data_disk_partition
+
+- name: Formater la partition en ext4
+  ansible.builtin.filesystem:
+    fstype: ext4
+    dev: "{{ data_disk_device }}1"
+
+- name: Créer le point de montage
+  ansible.builtin.file:
+    path: "{{ data_disk_mount }}"
+    state: directory
+    owner: "1000"
+    group: "1000"
+    mode: "0755"
+
+- name: Monter le disque de données et l'ajouter au fstab
+  ansible.posix.mount:
+    path: "{{ data_disk_mount }}"
+    src: "{{ data_disk_device }}1"
+    fstype: ext4
+    state: mounted
