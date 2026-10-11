@@ -7,3 +7,4 @@ resources:
   - apps/headlamp
   - rbac/tailscale-admin-binding.yaml
   - monitoring
+  - argocd
