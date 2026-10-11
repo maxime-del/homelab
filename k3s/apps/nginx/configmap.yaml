@@ -1,0 +1,37 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: nginx-homepage
+data:
+  index.html: |
+    <!doctype html>
+    <html lang="fr">
+    <head>
+      <meta charset="utf-8">
+      <title>Homelab</title>
+      <style>
+        body { font-family: sans-serif; background: #1e1e2e; color: #eee; margin: 0; padding: 3rem; }
+        h1 { font-weight: 600; }
+        ul { list-style: none; padding: 0; }
+        li { margin: 0.5rem 0; }
+        a {
+          display: inline-block;
+          padding: 0.75rem 1.5rem;
+          background: #313244;
+          color: #89b4fa;
+          text-decoration: none;
+          border-radius: 8px;
+          font-size: 1.1rem;
+        }
+        a:hover { background: #45475a; }
+      </style>
+    </head>
+    <body>
+      <h1>Homelab</h1>
+      <ul>
+        <li><a href="http://sonarr.homelab.local">Sonarr</a></li>
+        <li><a href="http://grafana.homelab.local">Grafana</a></li>
+        <li><a href="http://headlamp.homelab.local">Headlamp</a></li>
+      </ul>
+    </body>
+    </html>

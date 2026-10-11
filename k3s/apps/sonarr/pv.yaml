@@ -17,7 +17,6 @@ spec:
     required:
       nodeSelectorTerms:
         - matchExpressions:
-            # Doit correspondre au nom de nœud vu par `kubectl get nodes` pour worker_1 (192.168.1.62).
             - key: kubernetes.io/hostname
               operator: In
               values:

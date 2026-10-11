@@ -24,3 +24,6 @@ secrets.auto.tfvars
 
 # Ansible
 *vault.yml
+
+# Personal/local-only docs
+k3s/README.md

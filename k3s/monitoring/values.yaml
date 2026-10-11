@@ -1,0 +1,63 @@
+# Values pour prometheus-community/kube-prometheus-stack
+# Installation : voir k3s/monitoring/README.md
+#
+# Dimensionné pour un cluster homelab modeste (3 VMs, 2 vCPU / 4-8Go RAM).
+# Pas de limits fixées volontairement (évite les OOMKill sur des pics de
+# scrape/compaction) ; seulement des requests pour aider le scheduler.
+
+grafana:
+  adminUser: admin
+  # Pas de adminPassword ici : le chart génère un secret aléatoire
+  # (<release>-grafana), récupéré via kubectl, jamais commité.
+  persistence:
+    enabled: true
+    storageClassName: local-path
+    accessModes:
+      - ReadWriteOnce
+    size: 2Gi
+  resources:
+    requests:
+      cpu: 50m
+      memory: 128Mi
+
+prometheus:
+  prometheusSpec:
+    retention: 15d
+    storageSpec:
+      volumeClaimTemplate:
+        spec:
+          storageClassName: local-path
+          accessModes:
+            - ReadWriteOnce
+          resources:
+            requests:
+              storage: 10Gi
+    resources:
+      requests:
+        cpu: 200m
+        memory: 512Mi
+
+alertmanager:
+  alertmanagerSpec:
+    resources:
+      requests:
+        cpu: 20m
+        memory: 32Mi
+
+prometheusOperator:
+  resources:
+    requests:
+      cpu: 50m
+      memory: 64Mi
+
+kube-state-metrics:
+  resources:
+    requests:
+      cpu: 20m
+      memory: 32Mi
+
+prometheus-node-exporter:
+  resources:
+    requests:
+      cpu: 20m
+      memory: 32Mi
