@@ -36,4 +36,7 @@ module "k8s_workers" {
 
   # Disque de données dédié pour le stockage persistant (ex: Sonarr) sur worker-1
   extra_disk_size_gb = each.key == "worker-1" ? 50 : null
+
+  # worker-2 a atteint la pression disque (images de conteneurs, volumes locaux) : disque racine agrandi
+  disk_size_gb = each.key == "worker-2" ? 64 : 32
 }

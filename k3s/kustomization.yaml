@@ -7,6 +7,7 @@ resources:
   - apps/profile-website
   - apps/headlamp
   - apps/authelia
+  - apps/openbao
   - rbac/tailscale-admin-binding.yaml
   - monitoring
   - argocd
