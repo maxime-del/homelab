@@ -35,6 +35,9 @@ spec:
               mountPath: /config/users_database.yml
               subPath: users_database.yml
               readOnly: true
+            - name: oidc-key
+              mountPath: /secrets-oidc
+              readOnly: true
             - name: data
               mountPath: /data
           resources:
@@ -51,6 +54,9 @@ spec:
         - name: users-db
           secret:
             secretName: authelia-users
+        - name: oidc-key
+          secret:
+            secretName: authelia-oidc-key
         - name: data
           persistentVolumeClaim:
             claimName: authelia-data
