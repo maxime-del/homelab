@@ -20,6 +20,9 @@ spec:
       containers:
         - name: authelia
           image: authelia/authelia:latest
+          args:
+            - "--config=/config/configuration.yml"
+            - "--config=/secrets-oidc/jwks.yml"
           envFrom:
             - secretRef:
                 name: authelia-secrets

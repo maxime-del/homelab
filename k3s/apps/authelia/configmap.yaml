@@ -45,8 +45,6 @@ data:
 
     identity_providers:
       oidc:
-        jwks:
-          - key_file: '/secrets-oidc/oidc_private_key.pem'
         clients:
           - client_id: 'grafana'
             client_name: 'Grafana'
