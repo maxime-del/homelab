@@ -51,6 +51,7 @@ data:
             client_secret: '$pbkdf2-sha512$310000$xDiyyPT471uziRG4wqAAow$ji/Ay7YsD7NamOlkOA3jXYKWeoO0/8XLDMrWNJnAmLy78lnDTC3BIlu36f/uIGIcbj41B301h/G1I3VHmgxXLw'
             public: false
             authorization_policy: 'one_factor'
+            consent_mode: 'implicit'
             redirect_uris:
               - 'https://grafana.homelab.local/login/generic_oauth'
             scopes:
@@ -64,6 +65,7 @@ data:
             client_secret: '$pbkdf2-sha512$310000$CuK1oY7cwmmEzuWsgekXkQ$KvOnPOrh9koV5c9HXxt3.8vx47jGBFxA4MCBH.ekytGHxundWmn4OCdh1qQklVnIlZtghcLkX0EhpGjIV.S2kA'
             public: false
             authorization_policy: 'one_factor'
+            consent_mode: 'implicit'
             redirect_uris:
               - 'https://argocd.homelab.local/auth/callback'
             scopes:
