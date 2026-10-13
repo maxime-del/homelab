@@ -3,9 +3,13 @@ kind: Ingress
 metadata:
   name: grafana
   annotations:
-    traefik.ingress.kubernetes.io/router.entrypoints: web
+    traefik.ingress.kubernetes.io/router.entrypoints: websecure
+    traefik.ingress.kubernetes.io/router.middlewares: authelia-forward-auth@kubernetescrd
 spec:
   ingressClassName: traefik
+  tls:
+    - hosts:
+        - grafana.homelab.local
   rules:
     - host: grafana.homelab.local
       http:

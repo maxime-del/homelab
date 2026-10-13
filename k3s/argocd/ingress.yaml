@@ -3,9 +3,13 @@ kind: Ingress
 metadata:
   name: argocd
   annotations:
-    traefik.ingress.kubernetes.io/router.entrypoints: web
+    traefik.ingress.kubernetes.io/router.entrypoints: websecure
+    traefik.ingress.kubernetes.io/router.middlewares: authelia-forward-auth@kubernetescrd
 spec:
   ingressClassName: traefik
+  tls:
+    - hosts:
+        - argocd.homelab.local
   rules:
     - host: argocd.homelab.local
       http:

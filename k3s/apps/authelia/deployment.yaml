@@ -1,0 +1,56 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: authelia
+  labels:
+    app: authelia
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: authelia
+  template:
+    metadata:
+      labels:
+        app: authelia
+    spec:
+      enableServiceLinks: false
+      containers:
+        - name: authelia
+          image: authelia/authelia:latest
+          envFrom:
+            - secretRef:
+                name: authelia-secrets
+          ports:
+            - name: http
+              containerPort: 9091
+          volumeMounts:
+            - name: config
+              mountPath: /config/configuration.yml
+              subPath: configuration.yml
+              readOnly: true
+            - name: users-db
+              mountPath: /config/users_database.yml
+              subPath: users_database.yml
+              readOnly: true
+            - name: data
+              mountPath: /data
+          resources:
+            requests:
+              cpu: 50m
+              memory: 128Mi
+            limits:
+              cpu: 500m
+              memory: 256Mi
+      volumes:
+        - name: config
+          configMap:
+            name: authelia-config
+        - name: users-db
+          secret:
+            secretName: authelia-users
+        - name: data
+          persistentVolumeClaim:
+            claimName: authelia-data
