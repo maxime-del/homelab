@@ -13,6 +13,27 @@ configs:
         - profile
         - email
         - groups
+      rootCA: |
+        -----BEGIN CERTIFICATE-----
+        MIIDOjCCAiKgAwIBAgIUVsIvyF4VO3Fxkh8Y7r3Z+A3ZIaowDQYJKoZIhvcNAQEL
+        BQAwHTEbMBkGA1UEAwwSYXV0aC5ob21lbGFiLmxvY2FsMB4XDTI2MTAxMzE4MTEw
+        N1oXDTM2MTAxMDE4MTEwN1owHTEbMBkGA1UEAwwSYXV0aC5ob21lbGFiLmxvY2Fs
+        MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA19CrBNP8Pnc4BGIFCbqI
+        f2qgqrlGwGT3mDQw5jn71SGphOKgszLi/+VI0PCZqmnbdrjv6wRA4iJwaum4t4+U
+        f3XjJqlILRc/8G3gaP1nfvnPkFcpE6Fdy1yp5J+pRZQiQJcUFIexEDA88GQSHUhx
+        bhrpLl2lUplkeRm83nMjWpPvqrnTbYlWApbeVCkc/GyhCupPi0YQf8VHwoMaDXGO
+        X3cbgSEYalwxSdlk2kfcro22lyL6OG/feQLBAKOnxu5tW8mE2a6/XMqld25x4SCh
+        3y3WFawdbC5RxPgVwKP7VrIRftpxiYUJCoVtsTEAe0xgWSQ0nP48k7vSLosFNUr+
+        twIDAQABo3IwcDAdBgNVHQ4EFgQU14MWti3mwHxSZaEEToT3P6xy198wHwYDVR0j
+        BBgwFoAU14MWti3mwHxSZaEEToT3P6xy198wDwYDVR0TAQH/BAUwAwEB/zAdBgNV
+        HREEFjAUghJhdXRoLmhvbWVsYWIubG9jYWwwDQYJKoZIhvcNAQELBQADggEBAHtx
+        LTyCFd1UyztLwdFJo+vcFnwbgj2hUpYEMC1gzS5TzePSlO0Lx1t8qAe9sS2Yz8Tl
+        fN4QSkcvOMit6z3xpagKzfcOWhLKi42460SxdZqB1brK734fuWIXccWbT+DL6qJu
+        0dwgd14z99qhWKCZpa+v7aoH7bYn18AGY4Fh/Sl4BMhMQ73EFCSDb1J3hhJSawAL
+        yxH9H9QI1lOouGOjIY2WdM9T/YBWPBq+RwCEk8WD4knnC24zuFAEEn5hOvrhXBcO
+        lrrN/qP5RrOe/09kC6gG+73idpyEjRz1IARwhajgGBaIA8Q3qHXkeMR97DzxZeLb
+        ciQNWMRmPnbaBd81y5U=
+        -----END CERTIFICATE-----
 
 dex:
   enabled: false

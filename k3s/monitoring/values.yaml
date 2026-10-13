@@ -3,6 +3,11 @@ grafana:
   # Pas de adminPassword ici : le chart génère un secret aléatoire
   # (<release>-grafana), récupéré via kubectl, jamais commité.
   envFromSecret: grafana-oidc-secret
+  extraConfigmapMounts:
+    - name: authelia-ca
+      mountPath: /etc/grafana/authelia-ca
+      configMap: authelia-ca
+      readOnly: true
   "grafana.ini":
     server:
       root_url: https://grafana.homelab.local
@@ -16,6 +21,7 @@ grafana:
       token_url: https://auth.homelab.local/api/oidc/token
       api_url: https://auth.homelab.local/api/oidc/userinfo
       use_pkce: true
+      tls_client_ca: /etc/grafana/authelia-ca/ca.crt
   persistence:
     enabled: true
     storageClassName: local-path

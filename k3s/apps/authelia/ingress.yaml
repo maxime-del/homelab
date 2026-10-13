@@ -9,6 +9,7 @@ spec:
   tls:
     - hosts:
         - auth.homelab.local
+      secretName: authelia-tls
   rules:
     - host: auth.homelab.local
       http:
