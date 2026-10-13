@@ -32,6 +32,8 @@ data:
         <li><a href="http://sonarr.homelab.local">Sonarr</a></li>
         <li><a href="http://grafana.homelab.local">Grafana</a></li>
         <li><a href="http://headlamp.homelab.local">Headlamp</a></li>
+        <li><a href="http://maxime.homelab.local">Maxime</a></li>
+
       </ul>
     </body>
     </html>
