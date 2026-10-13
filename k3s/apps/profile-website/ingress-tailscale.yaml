@@ -1,0 +1,14 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: profile-website-ts
+spec:
+  ingressClassName: tailscale
+  defaultBackend:
+    service:
+      name: profile-website-service
+      port:
+        number: 80
+  tls:
+    - hosts:
+        - maxime
