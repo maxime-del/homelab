@@ -1,6 +1,18 @@
 configs:
   params:
     server.insecure: true
+  cm:
+    url: https://argocd.homelab.local
+    oidc.config: |
+      name: Authelia
+      issuer: https://auth.homelab.local
+      clientId: argocd
+      clientSecret: $oidc.authelia.clientSecret
+      requestedScopes:
+        - openid
+        - profile
+        - email
+        - groups
 
 dex:
   enabled: false
