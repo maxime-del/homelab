@@ -34,6 +34,10 @@ configs:
         lrrN/qP5RrOe/09kC6gG+73idpyEjRz1IARwhajgGBaIA8Q3qHXkeMR97DzxZeLb
         ciQNWMRmPnbaBd81y5U=
         -----END CERTIFICATE-----
+  rbac:
+    policy.default: role:readonly
+    policy.csv: |
+      g, admins, role:admin
 
 dex:
   enabled: false
