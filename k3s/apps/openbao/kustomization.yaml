@@ -5,6 +5,7 @@ namespace: openbao
 
 resources:
   - namespace.yaml
+  - serviceaccount.yaml
   - configmap.yaml
   - statefulset.yaml
   - service.yaml

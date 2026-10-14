@@ -15,6 +15,7 @@ spec:
       labels:
         app: openbao
     spec:
+      serviceAccountName: openbao
       containers:
         - name: openbao
           image: openbao/openbao:latest
