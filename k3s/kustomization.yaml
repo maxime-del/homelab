@@ -11,3 +11,4 @@ resources:
   - rbac/tailscale-admin-binding.yaml
   - monitoring
   - argocd
+  - external-secrets
