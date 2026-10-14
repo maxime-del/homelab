@@ -6,3 +6,4 @@ namespace: monitoring
 resources:
   - ingress.yaml
   - ingress-tailscale.yaml
+  - externalsecret.yaml

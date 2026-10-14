@@ -7,3 +7,4 @@ resources:
   - ingress.yaml
   - ingress-tailscale.yaml
   - application.yaml
+  - externalsecret.yaml
