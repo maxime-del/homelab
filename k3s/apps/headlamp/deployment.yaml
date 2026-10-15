@@ -18,11 +18,26 @@ spec:
       containers:
         - name: headlamp
           image: ghcr.io/headlamp-k8s/headlamp:latest
+          command: ["sh", "-c"]
           args:
-            - "-in-cluster"
+            - >-
+              exec /headlamp/headlamp-server -in-cluster
+              -oidc-client-id=headlamp
+              -oidc-client-secret="$OIDC_CLIENT_SECRET"
+              -oidc-idp-issuer-url=https://auth.homelab.local
+              -oidc-callback-url=https://headlamp.homelab.local/oidc-callback
+              -oidc-scopes=openid,profile,email,groups
+              -oidc-ca-file=/etc/headlamp/authelia-ca/ca.crt
+          envFrom:
+            - secretRef:
+                name: headlamp-oidc-secret
           ports:
             - name: http
               containerPort: 4466
+          volumeMounts:
+            - name: authelia-ca
+              mountPath: /etc/headlamp/authelia-ca
+              readOnly: true
           resources:
             requests:
               cpu: 50m
@@ -30,3 +45,7 @@ spec:
             limits:
               cpu: 500m
               memory: 256Mi
+      volumes:
+        - name: authelia-ca
+          configMap:
+            name: authelia-ca

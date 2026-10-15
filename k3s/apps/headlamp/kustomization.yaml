@@ -7,6 +7,8 @@ resources:
   - namespace.yaml
   - serviceaccount.yaml
   - rbac.yaml
+  - configmap.yaml
+  - externalsecret.yaml
   - deployment.yaml
   - service.yaml
   - ingress.yaml

@@ -9,6 +9,7 @@ resources:
   - apps/authelia
   - apps/openbao
   - rbac/tailscale-admin-binding.yaml
+  - rbac/oidc-admins-binding.yaml
   - monitoring
   - argocd
   - external-secrets

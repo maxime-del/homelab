@@ -4,7 +4,6 @@ metadata:
   name: headlamp
   annotations:
     traefik.ingress.kubernetes.io/router.entrypoints: websecure
-    traefik.ingress.kubernetes.io/router.middlewares: authelia-forward-auth@kubernetescrd
 spec:
   ingressClassName: traefik
   tls:

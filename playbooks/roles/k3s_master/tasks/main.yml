@@ -1,3 +1,30 @@
+- name: Déployer le certificat CA d'Authelia (pour que l'API server valide le JWKS OIDC)
+  ansible.builtin.copy:
+    src: authelia-ca.crt
+    dest: /etc/rancher/k3s/authelia-ca.crt
+    mode: "0644"
+  notify: Redémarrer k3s
+
+- name: Permettre à l'API server de résoudre auth.homelab.local
+  ansible.builtin.lineinfile:
+    path: /etc/hosts
+    line: "192.168.1.62 auth.homelab.local"
+    create: true
+  notify: Redémarrer k3s
+
+- name: Configurer l'API server pour accepter les tokens OIDC d'Authelia
+  ansible.builtin.copy:
+    content: |
+      kube-apiserver-arg:
+        - "oidc-issuer-url=https://auth.homelab.local"
+        - "oidc-client-id=headlamp"
+        - "oidc-username-claim=email"
+        - "oidc-groups-claim=groups"
+        - "oidc-ca-file=/etc/rancher/k3s/authelia-ca.crt"
+    dest: /etc/rancher/k3s/config.yaml
+    mode: "0644"
+  notify: Redémarrer k3s
+
 - name: Installer k3s server avec token fixe
   ansible.builtin.shell: |
     curl -sfL https://get.k3s.io | K3S_TOKEN={{ k3s_token }} sh -

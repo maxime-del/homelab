@@ -60,6 +60,20 @@ data:
               - 'email'
               - 'groups'
             userinfo_signed_response_alg: 'none'
+          - client_id: 'headlamp'
+            client_name: 'Headlamp'
+            client_secret: '$pbkdf2-sha512$310000$Rrl2jRu0uZku1TruaQNBHg$vZrSxwjZc2Js1S7O1hKiIv5Nb0tJ8tLvK1Lwps0Iy04bmckFWfC6Q.WZVWktzxw2JpnnA2vf4wu4o0i7iLfLXw'
+            public: false
+            authorization_policy: 'one_factor'
+            consent_mode: 'implicit'
+            redirect_uris:
+              - 'https://headlamp.homelab.local/oidc-callback'
+            scopes:
+              - 'openid'
+              - 'profile'
+              - 'email'
+              - 'groups'
+            userinfo_signed_response_alg: 'none'
           - client_id: 'argocd'
             client_name: 'ArgoCD'
             client_secret: '$pbkdf2-sha512$310000$CuK1oY7cwmmEzuWsgekXkQ$KvOnPOrh9koV5c9HXxt3.8vx47jGBFxA4MCBH.ekytGHxundWmn4OCdh1qQklVnIlZtghcLkX0EhpGjIV.S2kA'
