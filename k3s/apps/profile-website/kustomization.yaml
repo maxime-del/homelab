@@ -13,4 +13,4 @@ resources:
 # The profile_website CI rewrites newTag on every push to main; Argo CD then rolls it out.
 images:
   - name: ghcr.io/maxime-del/profile_website
-    newTag: sha-b249075
+    newTag: sha-973cced
