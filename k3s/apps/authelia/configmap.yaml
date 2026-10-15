@@ -45,6 +45,9 @@ data:
 
     identity_providers:
       oidc:
+        claims_policies:
+          kubernetes:
+            id_token: ['email', 'groups']
         clients:
           - client_id: 'grafana'
             client_name: 'Grafana'
@@ -66,6 +69,7 @@ data:
             public: false
             authorization_policy: 'one_factor'
             consent_mode: 'implicit'
+            claims_policy: 'kubernetes'
             redirect_uris:
               - 'https://headlamp.homelab.local/oidc-callback'
             scopes:
