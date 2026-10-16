@@ -9,6 +9,8 @@ resources:
   - service.yaml
   - ingress.yaml
   - ingress-tailscale.yaml
+  - cloudflared-externalsecret.yaml
+  - cloudflared-deployment.yaml
 
 # The profile_website CI rewrites newTag on every push to main; Argo CD then rolls it out.
 images:
