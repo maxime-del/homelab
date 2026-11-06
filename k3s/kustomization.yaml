@@ -8,7 +8,6 @@ resources:
   - apps/headlamp
   - apps/authelia
   - apps/openbao
-  - apps/exercise
   - rbac/tailscale-admin-binding.yaml
   - rbac/oidc-admins-binding.yaml
   - monitoring
